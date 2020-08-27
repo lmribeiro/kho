@@ -20,12 +20,23 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        "volt/dist/vendor/@fortawesome/fontawesome-free/css/all.min.css",
+        "volt/dist/vendor/notyf/notyf.min.css",
+        "volt/dist/css/volt.css",
     ];
     public $js = [
+        "volt/dist/vendor/popper.js/dist/umd/popper.min.js",
+        "volt/dist/vendor/bootstrap/dist/js/bootstrap.min.js",
+        "volt/dist/vendor/onscreen/dist/on-screen.umd.min.js",
+        "volt/dist/vendor/nouislider/distribute/nouislider.min.js",
+        "volt/dist/vendor/jarallax/dist/jarallax.min.js",
+        "volt/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js",
+        "volt/dist/vendor/notyf/notyf.min.js",
+        "volt/dist/vendor/simplebar/dist/simplebar.min.js",
+        "volt/dist/assets/js/volt.js",
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+//        'yii\bootstrap\BootstrapAsset',
     ];
 }
