@@ -22,12 +22,10 @@ use Yii;
  * @property int $deleted
  * @property string|null $deleted_at
  *
- * @property Link[] $links
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 
-    const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
 
     /**
@@ -76,16 +74,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'deleted' => Yii::t('app', 'Apagado'),
             'deleted_at' => Yii::t('app', 'Apago em'),
         ];
-    }
-
-    /**
-     * Gets query for [[Links]].
-     *
-     * @return \yii\db\ActiveQuery|LinkQuery
-     */
-    public function getLinks()
-    {
-        return $this->hasMany(Link::className(), ['user_id' => 'id']);
     }
 
     /**

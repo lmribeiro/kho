@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark pl-0 pr-2 pb-0">
     <div class="container-fluid px-0">
         <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
@@ -20,7 +25,7 @@
 <!--                            <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"-->
 <!--                                 src="@@path/assets/img/team/profile-picture-3.jpg">-->
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small font-weight-bold">Admin</span>
+                                <span class="mb-0 font-small font-weight-bold"><?= Yii::$app->user->identity->name ?></span>
                             </div>
                         </div>
                     </a>
@@ -29,7 +34,7 @@
                             Profile</a>
                         <a class="dropdown-item font-weight-bold" href="#"><span class="fas fa-cog"></span>Settings</a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item font-weight-bold" href="#"><span
+                        <a class="dropdown-item font-weight-bold" href="<?= Url::to(['logout']) ?>"><span
                                     class="fas fa-sign-out-alt text-danger"></span>Logout</a>
                     </div>
                 </li>

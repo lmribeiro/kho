@@ -8,6 +8,7 @@ $config = [
     'name' => 'KHO',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'homeUrl'=> 'login',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

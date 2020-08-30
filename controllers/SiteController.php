@@ -2,14 +2,24 @@
 
 namespace app\controllers;
 
+use app\models\LoginForm;
+use app\models\PasswordReset;
+use app\models\PasswordResetByEmail;
+use app\models\PasswordResetByUsername;
+use app\models\User;
 use Yii;
+use yii\base\Action;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
+/**
+ *
+ * Class SiteController
+ * @package app\controllers
+ */
 class SiteController extends Controller
 {
     /**
@@ -32,7 +42,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -47,11 +57,27 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
         ];
+    }
+
+    /**
+     * Before Action
+     *
+     * @param Action $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, ['login', 'reset-password'])) {
+            $this->layout = "login";
+        }
+
+        try {
+            return parent::beforeAction($action);
+        } catch (BadRequestHttpException $e) {
+            Yii::error($e->getMessage());
+        }
+        return true;
     }
 
     /**
@@ -65,9 +91,9 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Login
      *
-     * @return Response|string
+     * @return string|Response
      */
     public function actionLogin()
     {
@@ -76,6 +102,25 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+
+        if (User::find()->count() == 0) {
+
+            $admin = new User();
+            $admin->role = 'ADMIN';
+            $admin->username = 'admin';
+            $admin->email = 'admin@kha.com';
+            $admin->name = 'Admin';
+            $admin->setPassword('123456');
+            $admin->generateAuthKey();
+            $admin->status = 1;
+            $admin->save();
+
+            $model->username = $admin->email;
+            $model->password = '123456';
+
+            Yii::$app->session->setFlash('success', Yii::t('app', 'Administrador master adicionado com sucesso'));
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
@@ -94,35 +139,50 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
     /**
-     * Displays contact page.
+     * Reset Password
      *
-     * @return Response|string
+     * @return string|Response
      */
-    public function actionContact()
+    public function actionResetPassword()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
         }
-        return $this->render('contact', [
+
+        $model = new PasswordReset();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (filter_var($model->emailusername, FILTER_VALIDATE_EMAIL)) {
+                $byEmail = new PasswordResetByEmail();
+                $byEmail->email = $model->emailusername;
+
+                if ($byEmail->validate() && $byEmail->sendEmail()) {
+                    Yii::$app->session
+                        ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
+
+                    return $this->redirect(['login']);
+                }
+                $model->addError('emailusername', $byEmail->errors['email'][0]);
+            } else {
+                $byUsername = new PasswordResetByUsername();
+                $byUsername->username = $model->emailusername;
+
+                if ($byUsername->validate() && $byUsername->sendEmail()) {
+                    Yii::$app->session
+                        ->setFlash('success', Yii::t('app', 'Verifique o seu email para concluir o processo.'));
+
+                    return $this->redirect(['login']);
+                }
+                $model->addError('emailusername', $byUsername->errors['username'][0]);
+            }
+        }
+
+        return $this->render('reset-password', [
             'model' => $model,
         ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }

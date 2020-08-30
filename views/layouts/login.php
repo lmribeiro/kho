@@ -20,20 +20,27 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="bg-soft">
 <?php $this->beginBody() ?>
 
 <div class="container-fluid bg-soft">
-    <?php include __DIR__ . '/_nav.php'; ?>
-    <div class="row">
-        <div class="col-12">
-            <?php include __DIR__ . '/_sidebar.php'; ?>
-            <main class="content">
-                <?php include __DIR__ . '/_topbar.php'; ?>
-                <?= $content ?>
-            </main>
-        </div>
-    </div>
+    <main>
+
+        <!-- Section -->
+        <section class="vh-lg-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center form-bg-image"
+                     data-background-lg="../../assets/img/illustrations/signin.svg">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="signin-inner my-3 my-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <?= $content ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
 </div>
 
 <?php $this->endBody() ?>
