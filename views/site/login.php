@@ -1,11 +1,11 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
 
 /* @var $model app\models\LoginForm */
 
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -25,10 +25,12 @@ $this->title = 'Login';
         'labelOptions' => ['class' => 'col-lg-12 control-label'],
     ],
 ]); ?>
-
-<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-<?= $form->field($model, 'password')->passwordInput() ?>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+</div>
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <?= $form->field($model, 'password')->passwordInput() ?>
+</div>
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <?=
@@ -38,14 +40,17 @@ $this->title = 'Login';
     ]);
 
     ?>
-    <div><a href="<?= Url::to(['reset-password'])?>" class="small text-right"><?= Yii::t('app', 'Recuperar password') ?></a></div>
 </div>
-
 
 <div class="form-group">
     <div class="col-lg-12">
         <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
     </div>
+</div>
+<div></div>
+<div class="mt-2 text-center">
+    <a href="<?= Url::to(['reset-password']) ?>"
+       class="small text-center"><?= Yii::t('app', 'Recuperar password') ?></a>
 </div>
 
 <?php ActiveForm::end(); ?>

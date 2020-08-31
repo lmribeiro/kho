@@ -30,7 +30,7 @@ AppAsset::register($this);
         <section class="vh-lg-100 d-flex align-items-center">
             <div class="container">
                 <div class="row justify-content-center form-bg-image"
-                     data-background-lg="../../assets/img/illustrations/signin.svg">
+                     data-background-lg="">
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="signin-inner my-3 my-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                             <?= $content ?>

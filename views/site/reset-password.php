@@ -1,10 +1,10 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
 
 /* @var $model app\models\LoginForm */
 
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -20,7 +20,7 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Recuperar Password');
 $form = ActiveForm::begin([
     'layout' => 'horizontal',
     'fieldConfig' => [
-        'template' => "<div class=\"row\">{label}\n<div class=\"col-lg-12\">{input}</div></div>\n<div class=\"row\"><div class=\"col-lg-12 text-danger\">{error}</div></div>",
+        'template' => "{label}\n<div class=\"col-lg-12\">{input}</div>\n<div class=\"col-lg-12\">{error}</div>",
         'labelOptions' => ['class' => 'col-lg-12 control-label'],
     ],
 ]);

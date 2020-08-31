@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         "volt/dist/vendor/@fortawesome/fontawesome-free/css/all.min.css",
         "volt/dist/vendor/notyf/notyf.min.css",
         "volt/dist/css/volt.css",
+        "css/custom.css"
     ];
     public $js = [
         "volt/dist/vendor/popper.js/dist/umd/popper.min.js",
