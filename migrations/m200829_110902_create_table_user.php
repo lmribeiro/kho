@@ -36,6 +36,6 @@ class m200829_110902_create_table_user extends Migration
     public function safeDown()
     {
         $this->dropForeignKey('fk-link_user', 'link');
-        $this->dropTable('user');;
+        $this->dropTable('user');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use yii\authclient\widgets\AuthChoiceStyleAsset;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -8,12 +10,27 @@ $config = [
     'name' => 'KHO',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'homeUrl'=> 'login',
+    'charset' => 'UTF-8',
+    'timeZone' => 'Europe/Lisbon',
+    'language' => 'pt',
+    'sourceLanguage' => 'pt',
+    'defaultRoute' => 'site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'timeZone' => 'Europe/Lisbon',
+            'defaultTimeZone' => 'Europe/Lisbon',
+            'datetimeFormat' => 'yyyy-MM-dd HH:mm',
+            'dateFormat' => 'yyyy-MM-dd',
+            'timeFormat' => 'hh:mm',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'EUR',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'VLVUY-9lcvWDz4-WPbYDLy_MQ8rkhezX',
@@ -44,14 +61,29 @@ $config = [
                 ],
             ],
         ],
+        'assetManager' => [
+            'linkAssets' => false,
+            'appendTimestamp' => false,
+            'forceCopy' => false,
+            'bundles' => [
+                AuthChoiceStyleAsset::class => false,
+            ],
+        ],
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<alias:login|logout|set-password|reset-password>' => 'site/<alias>',
             ],
         ],
     ],
+    'modules' => [
+        'gridview' => [
+            'class' => '\kartik\grid\Module',
+        ]
+    ],
+
     'params' => $params,
 ];
 

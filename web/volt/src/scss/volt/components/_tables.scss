@@ -121,10 +121,14 @@
   .table {
       margin-bottom: 0;
 
+      td:last-child {
+        text-align: center;
+      }
       td,
       th {
           padding-left: $card-spacer-x;
           padding-right: $card-spacer-x;
+          vertical-align: middle;
       }
   }
 }

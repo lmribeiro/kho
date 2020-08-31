@@ -1,10 +1,10 @@
 <?php
 
 /* @var $this \yii\web\View */
-
 /* @var $content string */
 
 use app\assets\AppAsset;
+use app\widgets\Modals;
 use yii\helpers\Html;
 
 AppAsset::register($this);
@@ -35,6 +35,13 @@ AppAsset::register($this);
         </div>
     </div>
 </div>
+
+<?=
+Modals::widget([
+    'modals' => isset($this->params['modals']) ? $this->params['modals'] : [],
+]);
+
+?>
 
 <?php $this->endBody() ?>
 </body>
