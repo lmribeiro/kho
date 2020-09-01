@@ -18,6 +18,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="shortcut icon" href="<?= Yii::$app->params['avatar']['url'] ?>">
     <?php $this->head() ?>
 </head>
 <body class="bg-soft">
@@ -32,7 +33,9 @@ AppAsset::register($this);
                 <div class="row justify-content-center form-bg-image"
                      data-background-lg="">
                     <div class="col-12 d-flex align-items-center justify-content-center">
-                        <div class="signin-inner my-3 my-lg-0 bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                        <div class="signin-inner my-3 my-lg-0 justify-content-center bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                            <img class="user-avatar xl-avatar rounded-circle mb-3" alt="<?= Yii::$app->params['avatar']['name'] ?>"
+                                 style="margin: 0 auto;" src="<?= Yii::$app->params['avatar']['url'] ?>">
                             <?= $content ?>
                         </div>
                     </div>

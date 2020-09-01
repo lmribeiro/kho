@@ -28,7 +28,9 @@ use yii\widgets\Breadcrumbs;
         <div class="mb-3 mb-lg-0"><h1 class="h4"><?= Html::encode($this->title) ?></h1>
         </div>
         <div>
-            <?= Html::a('<i class="fas fa-plus-circle mr-1"></i> ' . Yii::t('app', 'Criar'), ['create'], ['class' => 'btn btn-outline-gray']) ?>
+            <?php if (Yii::$app->controller->action->id === "index") { ?>
+                <?= Html::a('<i class="fas fa-plus-circle mr-1"></i> ' . Yii::t('app', 'Criar'), ['create'], ['class' => 'btn btn-outline-gray']) ?>
+            <?php } ?>
         </div>
     </div>
 </div>

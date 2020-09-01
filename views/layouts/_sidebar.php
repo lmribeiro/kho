@@ -8,19 +8,25 @@ use yii\helpers\Url;
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="user-avatar lg-avatar mr-4">
-                    <img src="@@path/assets/img/team/profile-picture-3.jpg"
-                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    <img src="<?= Yii::$app->params['avatar']['url'] ?>"
+                         class="card-img-top rounded-circle border-white"
+                         alt="<?= Yii::$app->params['avatar']['name'] ?>">
                 </div>
                 <div class="d-block">
-                    <h2 class="h6">Hi, Jane</h2>
-                    <a href="@@path/pages/examples/sign-in.html" class="btn btn-secondary text-dark btn-xs"><span
-                                class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                    <h2 class="h6"><?= Yii::t('app', 'Olá')." ".Yii::$app->user->identity->name ?></h2>
+                    <a href="<?= Url::to(['/logout']) ?>" class="btn btn-secondary text-dark btn-xs">
+                        <span class="mr-2">
+                            <span class="fas fa-sign-out-alt"></span>
+                        </span>
+                        <?= Yii::t('app', 'Sair'); ?>
+                    </a>
                 </div>
             </div>
-            <div class="collapse-close d-md-none">
+            <div class="collapse-close ">
                 <a href="#sidebarMenu" class="fas fa-times" data-toggle="collapse"
                    data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
-                   aria-label="Toggle navigation"></a>
+                   aria-label="Toggle navigation">
+                </a>
             </div>
         </div>
         <ul class="nav flex-column">
