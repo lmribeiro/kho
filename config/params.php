@@ -4,6 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 return [
+    'avatar' => [
+        'name' => 'Luis Ribeiro',
+        'url' => 'https://avatars1.githubusercontent.com/u/4492981',
+    ],
     'user.passwordResetTokenExpire' => 3600,
     'bsVersion' => '4.x', // this will set globally `bsVersion` to Bootstrap 4.x for all Krajee Extensions
     'actions' => function ($attributes) {
