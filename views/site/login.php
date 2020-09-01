@@ -12,10 +12,8 @@ use yii\helpers\Url;
 $this->title = 'Login';
 ?>
 <div class="text-center text-md-center mb-4 mt-md-0">
-    <h1 class="mb-0 h3"><?= Html::encode($this->title) ?></h1>
+    <h1 class="mb-0 h5"><?= Html::encode($this->title) ?></h1>
 </div>
-
-<p class="text-center">Please fill out the following fields to login</p>
 
 <?php $form = ActiveForm::begin([
     'id' => 'login-form',

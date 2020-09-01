@@ -8,34 +8,43 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="education-form">
+<?php include __DIR__ . '/../_breadcrumbs.php'; ?>
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card ">
+            <div class="card-body">
+                <?php $form = ActiveForm::begin(); ?>
+                <div class="mb-4">
+                    <?= $form->field($model, 'school')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'school_image')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'school_url')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'degree')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'start_year')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'end_year')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="mb-4">
+                    <?= $form->field($model, 'grade')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+                </div>
 
-    <?php $form = ActiveForm::begin(); ?>
+                <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'school')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'school_image')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'school_url')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'degree')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'start_year')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'end_year')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'grade')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+            </div>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

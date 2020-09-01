@@ -12,9 +12,8 @@ $this->title = Yii::$app->name . ' | ' . Yii::t('app', 'Recuperar Password');
 
 ?>
 <div class="text-center text-md-center mb-4 mt-md-0">
-    <h1 class="mb-0 h3"><?= Html::encode(Yii::t('app', 'Recuperar Password')) ?></h1>
+    <h1 class="mb-0 h5"><?= Html::encode(Yii::t('app', 'Recuperar Password')) ?></h1>
 </div>
-
 
 <?php
 $form = ActiveForm::begin([
