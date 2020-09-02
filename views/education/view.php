@@ -6,41 +6,34 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Education */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Educations'), 'url' => ['index']];
+$this->title = $model->degree;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Education'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+$this->params['modals'][] = 'delete';
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="education-view">
+<?php include __DIR__ . '/../_breadcrumbs.php'; ?>
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card view">
+            <div class="card-body">
+                <img class="rounded-circle" src="<?= $model->school_image ?>" alt="<?= $model->school ?>"/>
+                <?= DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                        'school',
+                        'school_url:url',
+                        'degree',
+                        'description:ntext',
+                        'start_year',
+                        'end_year',
+                        'grade',
+                        'created_at',
+                        'updated_at',
+                    ],
+                ]) ?>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'school',
-            'school_image',
-            'school_url:url',
-            'degree',
-            'description:ntext',
-            'start_year',
-            'end_year',
-            'grade',
-            'created_at',
-            'updated_at',
-        ],
-    ]) ?>
-
+            </div>
+        </div>
+    </div>
 </div>
