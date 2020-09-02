@@ -1,3 +1,6 @@
 .invalid-feedback {
     display: block;
 }
+.view .table td:last-child {
+    text-align: left;
+}

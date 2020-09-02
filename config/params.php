@@ -15,7 +15,7 @@ return [
         foreach ($attributes as $key => $value) {
             $col[$key] = $value;
         }
-        $col['header'] = Yii::t('app', 'Ações');
+        $col['header'] = Yii::t('app', 'Actions');
         return $col;
     },
     'actionCol' => [
@@ -24,14 +24,14 @@ return [
         'template' => '{view} {update} {delete}',
         'buttons' => [
             'view' => function ($url) {
-                return Html::tag('span', Html::a('<i class="fas fa-fw fa-eye"></i>', $url, ['class' => 'btn btn-outline-success']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Ver')]);
+                return Html::tag('span', Html::a('<i class="fas fa-fw fa-eye"></i>', $url, ['class' => 'btn btn-outline-success']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'View')]);
             },
             'update' => function ($url) {
-                return Html::tag('span', Html::a('<i class="fas fa-fw fa-edit"></i>', $url, ['class' => 'btn btn-outline-info']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Editar')]);
+                return Html::tag('span', Html::a('<i class="fas fa-fw fa-pencil-alt"></i>', $url, ['class' => 'btn btn-outline-info']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Update')]);
             },
             'delete' => function ($url, $model) {
                 $action = explode('?', $url);
-                return Html::tag('span', Html::a('<i class="fas fa-fw fa-trash"></i>', '#', ['class' => 'btn btn-outline-danger btn-delete', 'data-url' => array_shift($action), 'data-id' => isset($model->id) ? $model->id : (isset($model->code) ? $model->code : $model->key), 'data-toggle' => 'modal', 'data-target' => '#delete_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Apagar')]);
+                return Html::tag('span', Html::a('<i class="fas fa-fw fa-trash"></i>', '#', ['class' => 'btn btn-outline-danger btn-delete', 'data-url' => array_shift($action), 'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#delete_modal']), ['data-toggle' => 'tooltip', 'data-title' => Yii::t('app', 'Delete')]);
             },
         ],
         'urlCreator' => function ($action, $data) {

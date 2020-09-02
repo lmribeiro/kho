@@ -12,7 +12,7 @@ use yii\helpers\Url;
                     <div class="input-group input-group-merge search-bar">
                         <span class="input-group-text" id="topbar-addon"><span class="fas fa-search"></span></span>
                         <input type="text" class="form-control" id="topbarInputIconLeft"
-                               placeholder="<?= Yii::t('app', 'Procurar'); ?>"
+                               placeholder="<?= Yii::t('app', 'Search'); ?>"
                                aria-label="Search" aria-describedby="topbar-addon">
                     </div>
                 </form>
@@ -34,16 +34,16 @@ use yii\helpers\Url;
                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
                         <a class="dropdown-item font-weight-bold" href="#">
                             <span class="far fa-user-circle"></span>
-                            <?= Yii::t('app', 'Perfil'); ?>
+                            <?= Yii::t('app', 'Profile'); ?>
                         </a>
                         <a class="dropdown-item font-weight-bold" href="#">
                             <span class="fas fa-cog"></span>
-                            <?= Yii::t('app', 'Definições'); ?>
+                            <?= Yii::t('app', 'Settings'); ?>
                         </a>
                         <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item font-weight-bold" href="<?= Url::to(['/logout']) ?>">
                             <span class="fas fa-sign-out-alt text-danger"></span>
-                            <?= Yii::t('app', 'Sair'); ?>
+                            <?= Yii::t('app', 'Logout'); ?>
                         </a>
                     </div>
                 </li>

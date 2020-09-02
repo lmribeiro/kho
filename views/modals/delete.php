@@ -22,7 +22,7 @@ $form = ActiveForm::begin([
                     <span class="modal-icon display-1-lg">
                         <span class="fas fa-trash"></span>
                     </span>
-                    <h2 class="h3 modal-title mb-3 text-white"><?= Yii::t('app', 'Apagar') ?></h2>
+                    <h2 class="h3 modal-title mb-3 text-white"><?= Yii::t('app', 'Delete') ?></h2>
                     <p class="mb-4 text-white"><?= Yii::t('app', 'Tem a certeza que pretende apagar este item?') ?></p>
                     <div class="progress-wrapper">
                         <div class="progress">

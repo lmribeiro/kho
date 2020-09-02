@@ -6,7 +6,7 @@ use kartik\grid\GridView;
 /* @var $searchModel app\models\ExperienceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Experiência');
+$this->title = Yii::t('app', 'Experience');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php include __DIR__ . '/../_breadcrumbs.php'; ?>
@@ -20,21 +20,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filterModel' => $searchModel,
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-
-                        'id',
                         'title',
                         'company',
-                        'company_image',
-                        'company_url:url',
+                        //'company_image',
+                        //'company_url:url',
                         //'location',
                         //'description:ntext',
-                        //'start_date',
-                        //'end_date',
+                        'start_date',
+                        'end_date',
                         //'current',
                         //'created_at',
                         //'updated_at',
-
-                        ['class' => 'yii\grid\ActionColumn'],
+                        $actionCol = Yii::$app->params['actions']([
+                            'template' => '{view} {update} {delete}',
+                        ]),
                     ],
                     'toolbar' => [
                         '{toggleData}',

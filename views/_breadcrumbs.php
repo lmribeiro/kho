@@ -29,7 +29,17 @@ use yii\widgets\Breadcrumbs;
         </div>
         <div>
             <?php if (Yii::$app->controller->action->id === "index") { ?>
-                <?= Html::a('<i class="fas fa-plus-circle mr-1"></i> ' . Yii::t('app', 'Criar'), ['create'], ['class' => 'btn btn-outline-gray']) ?>
+                <?= Html::a('<i class="fas fa-plus-circle mr-1"></i> ' . Yii::t('app', 'New'), ['create'], ['class' => 'btn btn-sm btn-outline-gray']) ?>
+            <?php } else if (Yii::$app->controller->action->id === "view") { ?>
+                <?= Html::a('<i class="fas fa-fw fa-pencil-alt"></i> '.Yii::t('app', 'Update'), ['update', 'id' => $model->id],
+                    ['class' => 'btn btn-sm btn-primary'])
+                ?>
+                <?= Html::a('<i class="fas fa-fw fa-trash"></i> '.Yii::t('app', 'Delete'), ['delete', 'id' => $model->id],
+                    [
+                        'class' => 'btn btn-sm btn-danger',
+                        'data-id' => $model->id, 'data-toggle' => 'modal', 'data-target' => '#delete_modal',
+                    ])
+                ?>
             <?php } ?>
         </div>
     </div>

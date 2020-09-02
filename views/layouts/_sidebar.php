@@ -18,7 +18,7 @@ use yii\helpers\Url;
                         <span class="mr-2">
                             <span class="fas fa-sign-out-alt"></span>
                         </span>
-                        <?= Yii::t('app', 'Sair'); ?>
+                        <?= Yii::t('app', 'Logout'); ?>
                     </a>
                 </div>
             </div>
@@ -41,21 +41,21 @@ use yii\helpers\Url;
             <li class="nav-item <?= Yii::$app->controller->id == "education" ? 'active' : '' ?>">
                 <a href="<?= Url::to(['/education']) ?>" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-graduation-cap"></span></span>
-                    <span><?= Yii::t('app', 'Educação'); ?></span>
+                    <span><?= Yii::t('app', 'Education'); ?></span>
                 </a>
             </li>
 
             <li class="nav-item <?= Yii::$app->controller->id == "experience" ? 'active' : '' ?>">
                 <a href="<?= Url::to(['/experience']) ?>" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-briefcase"></span></span>
-                    <span><?= Yii::t('app', 'Experiência'); ?></span>
+                    <span><?= Yii::t('app', 'Experience'); ?></span>
                 </a>
             </li>
 
             <li class="nav-item <?= Yii::$app->controller->id == "projects" ? 'active' : '' ?>">
                 <a href="<?= Url::to(['/projects']) ?>" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-project-diagram"></span></span>
-                    <span><?= Yii::t('app', 'Projetos'); ?></span>
+                    <span><?= Yii::t('app', 'Projects'); ?></span>
                 </a>
             </li>
 
@@ -64,7 +64,7 @@ use yii\helpers\Url;
             <li class="nav-item <?= Yii::$app->controller->id == "settings" ? 'active' : '' ?>">
                 <a href="<?= Url::to(['/settings']) ?>" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
-                    <span><?= Yii::t('app', 'Definições'); ?></span>
+                    <span><?= Yii::t('app', 'Settings'); ?></span>
                 </a>
             </li>
 
