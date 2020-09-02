@@ -21,8 +21,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         "volt/dist/vendor/@fortawesome/fontawesome-free/css/all.min.css",
-        "volt/dist/vendor/notyf/notyf.min.css",
         "volt/dist/css/volt.css",
+        'css/toastr.min.css',
         "css/custom.css"
     ];
     public $js = [
@@ -32,9 +32,9 @@ class AppAsset extends AssetBundle
         "volt/dist/vendor/nouislider/distribute/nouislider.min.js",
         "volt/dist/vendor/jarallax/dist/jarallax.min.js",
         "volt/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js",
-        "volt/dist/vendor/notyf/notyf.min.js",
         "volt/dist/vendor/simplebar/dist/simplebar.min.js",
         "volt/dist/assets/js/volt.js",
+        'js/toastr.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -5,6 +5,7 @@
 
 use app\assets\AppAsset;
 use app\widgets\Modals;
+use app\widgets\Notify;
 use yii\helpers\Html;
 
 AppAsset::register($this);
@@ -25,6 +26,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="container-fluid bg-soft">
+    <?= Notify::widget(); ?>
     <?php include __DIR__ . '/_nav.php'; ?>
     <div class="row">
         <div class="col-12">

@@ -67,6 +67,7 @@ class EducationController extends Controller
         $model = new Education();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Created with success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -87,6 +88,7 @@ class EducationController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Updated with success.'));
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -105,7 +107,7 @@ class EducationController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
+        Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Deleted with success.'));
         return $this->redirect(['index']);
     }
 
