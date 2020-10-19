@@ -1,6 +1,6 @@
-# Kho
+# Kho [Deprecated]
 
-The data storage for lribeiro.js.org.
+This project started as the data storage for my persnal web pagem lribeiro.js.org, but then i chage it for firebase.
 
 REQUIREMENTS
 ------------
